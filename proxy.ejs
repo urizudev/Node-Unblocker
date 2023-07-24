@@ -1,0 +1,25 @@
+<!-- proxy.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Node</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <h1>Welcome to Node</h1>
+  <p>Enter a URL starting with 'www' to be redirected through the proxy, or search below:</p>
+
+  <form action="/search" method="get" class="search-form">
+    <input type="text" name="query" placeholder="Enter a link or search query">
+    <button type="submit">Go</button>
+  </form>
+
+  <form action="/proxy/https://www.google.com/?gws_rd=ssl" method="get">
+    <button type="submit" class="google-button">Google</button>
+  </form>
+</body>
+
+</html>

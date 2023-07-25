@@ -78,21 +78,6 @@
       return;
     }
 
-    if (command.startsWith('calculate ')) {
-      const mathExpression = command.slice(5)
-      try {
-        const result = eval(mathExpression);
-        commandOutput.textContent = `Result ${result}`;
-      } catch (error) {
-        commandOutput.textContent = 'Invalid expression'
-      }
-      return;
-    }
-
-
-
-
-
       if (command.startsWith('print ')) {
       const textToPrint = command.slice(6); // Get the text after "print "
       commandOutput.textContent = textToPrint; // Set the output to the text

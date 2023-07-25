@@ -55,7 +55,7 @@ function checkAuthorization(req, res, next) {
     const password = req.query.password; // Assuming the password is passed as a query parameter
   
     // Replace 'your_password' with your desired password
-    if (password === 'OMGNODEHASSHELL!!!1') {
+    if (password === 'your_password') {
       next();
     } else {
       res.status(401).send('Unauthorized');
@@ -67,7 +67,7 @@ app.get('/testpassword', (req, res) => {
     const password = req.query.password; // Assuming the password is passed as a query parameter
   
     // Replace 'your_password' with your desired password
-    if (password === 'OMGNODEHASSHELL!!!1') {
+    if (password === 'your_password') {
       res.send('Password is correct.');
     } else {
       res.status(401).send('Unauthorized');

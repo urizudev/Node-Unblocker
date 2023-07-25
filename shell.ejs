@@ -1,0 +1,139 @@
+<!-- shell.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web Shell</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div id="password-section">
+    <h1>Welcome to the Web Shell</h1>
+    <form id="password-form">
+      <input type="password" id="password-input" placeholder="Enter password">
+      <button type="submit">Login</button>
+    </form>
+    <pre id="output"></pre>
+  </div>
+
+  <div id="shell-section" style="display: none;">
+    <h1>Shell Access Granted</h1>
+    <p>Type commands below:</p>
+    <input type="text" id="command-input" placeholder="Enter command">
+    <button type="button" onclick="executeCommand()">Execute</button>
+    <button type="button" onclick="executeHelpCommand()">Help</button> <!-- Add the button for the "help" command -->
+    <pre id="command-output"></pre>
+  </div>
+
+  <script>
+    const passwordSection = document.getElementById('password-section');
+    const shellSection = document.getElementById('shell-section');
+    const passwordForm = document.getElementById('password-form');
+    const passwordInput = document.getElementById('password-input');
+    const output = document.getElementById('output');
+    const commandInput = document.getElementById('command-input');
+    const commandOutput = document.getElementById('command-output');
+
+    passwordForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const password = passwordInput.value;
+      if (password.trim() === '') {
+        return;
+      }
+
+      const response = await fetch(`/testpassword?password=${encodeURIComponent(password)}`);
+      if (response.status === 200) {
+        const result = await response.text();
+        output.textContent = result;
+
+        passwordSection.style.display = 'none';
+        shellSection.style.display = 'block';
+      } else {
+        output.textContent = 'Unauthorized. Please enter the correct password.';
+      }
+    });
+
+    function executeCommand() {
+      const command = commandInput.value;
+      if (command.trim() === '') {
+        return;
+      }
+
+      if (command.trim() === 'showips') {
+        executeShowIPsCommand(); // Call executeShowIPsCommand for "showips" command
+        return;
+      }
+
+      if (command.startsWith('math ')) {
+      const mathExpression = command.slice(5); // Get the mathematical expression after "math "
+      try {
+        const result = eval(mathExpression); // Evaluate the expression
+        commandOutput.textContent = `Result: ${result}`; // Display the result
+      } catch (error) {
+        commandOutput.textContent = 'Invalid expression'; // Handle any errors in the expression
+      }
+      return;
+    }
+
+    if (command.startsWith('calculate ')) {
+      const mathExpression = command.slice(5)
+      try {
+        const result = eval(mathExpression);
+        commandOutput.textContent = `Result ${result}`;
+      } catch (error) {
+        commandOutput.textContent = 'Invalid expression'
+      }
+      return;
+    }
+
+
+
+
+
+      if (command.startsWith('print ')) {
+      const textToPrint = command.slice(6); // Get the text after "print "
+      commandOutput.textContent = textToPrint; // Set the output to the text
+      return;
+    }
+
+      fetch(`/execute?password=${encodeURIComponent(passwordInput.value)}&command=${encodeURIComponent(command)}`)
+        .then(response => response.text())
+        .then(result => {
+          commandOutput.textContent = result;
+        })
+        .catch(error => {
+          console.error('Error executing command:', error);
+          commandOutput.textContent = 'Error executing command.';
+        });
+    }
+
+    function executeShowIPsCommand() {
+      fetch(`/showips?password=${encodeURIComponent(passwordInput.value)}`)
+        .then(response => response.text())
+        .then(result => {
+          commandOutput.textContent = result;
+        })
+        .catch(error => {
+          console.error('Error executing command:', error);
+          commandOutput.textContent = 'Error executing command.';
+        });
+    }
+
+    function executeHelpCommand() {
+      fetch(`/help?password=${encodeURIComponent(passwordInput.value)}`)
+        .then(response => response.text())
+        .then(result => {
+          commandOutput.textContent = result;
+        })
+        .catch(error => {
+          console.error('Error executing command:', error);
+          commandOutput.textContent = 'Error executing command.';
+        });
+    }
+  </script>
+</body>
+
+</html>

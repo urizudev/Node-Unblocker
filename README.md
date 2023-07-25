@@ -13,4 +13,4 @@ https://nodejs.org/
 # How to start / run it
 
 Open a terminal in ur folder where node is and simply type
-'node app.js'
+* `node app.js`

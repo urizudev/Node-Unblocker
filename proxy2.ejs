@@ -23,6 +23,14 @@
     <!-- Go back to Google button -->
     <a href="/proxy" class="go-back-button">Go back to Google</a>
   </div>
+    <!-- Add the Socket.io client-side script here -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.on('viewsUpdate', (count) => {
+        document.getElementById('views-counter').textContent = count;
+      });
+    </script>
 </body>
 
 </html>

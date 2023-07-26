@@ -1,17 +1,14 @@
-<!-- proxy.ejs -->
-
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Node Unblocker</title>
   <link rel="stylesheet" href="/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2273822566525424" crossorigin="anonymous"></script>
 </head>
-
 <body>
   <div class="container">
-    <h1>Node</h1>
+    <h1>Node Unblocker</h1>
+    <!-- Add the views counter here -->
+    <p>Current Views: <span id="views-counter">0</span></p>
     <p>Type a link or a search query below:</p>
     <form id="search-form" action="/search" method="get">
       <div class="search-container">
@@ -19,9 +16,15 @@
         <button type="submit" id="search-button">Go</button>
       </div>
     </form>
-    <a href="/proxy/https://www.google.com/?gws_rd=ssl" class="google-button">Google</a>
-    <a href="/proxy2/" class="google-button">DuckDuckGo</a>
+    <a href="/proxy2" class="google-button">Try DuckDuckGo</a>
   </div>
+  <!-- Add the Socket.io client-side script here -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    socket.on('viewsUpdate', (count) => {
+      document.getElementById('views-counter').textContent = count;
+    });
+  </script>
 </body>
-
 </html>

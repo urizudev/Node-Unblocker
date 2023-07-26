@@ -1,31 +1,94 @@
 /* style.css */
 
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Center the content inside the container */
 }
 
 h1 {
-  margin-bottom: 10px;
-}
-
-p {
-  margin-top: 0;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.search-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+p {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.search-form input[type="text"] {
-  margin-right: 5px;
+/* Proxy Page Styles */
+#search-form {
+  margin-top: 10px; /* Add some spacing above the search bar */
+}
+
+.search-container {
+  display: flex; /* Use flexbox to make the search bar and button align in a row */
+  align-items: center; /* Vertically center the items in the container */
+}
+
+#search-input {
+  flex: 1; /* Use the available space in the flex container */
+  padding: 8px;
+  font-size: 16px;
+}
+
+#search-button {
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-left: 10px; /* Add some spacing between the search bar and the button */
+}
+
+#search-button:hover {
+  background-color: #0056b3;
 }
 
 .google-button {
+  display: inline-block;
   margin-top: 10px;
+  cursor: pointer;
+  background-color: #4285f4;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.google-button:hover {
+  background-color: #1a73e8;
+}
+
+/* Shell Page Styles */
+/* Add any additional styles you need for the shell page here */
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  /* Add responsive styles if needed */
+}
+
+.go-back-button {
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 15px;
+  margin-left: 10px;
+  display: block; /* Convert the link into a block element */
+  margin-top: 20px; /* Add margin at the top to create some spacing */
 }

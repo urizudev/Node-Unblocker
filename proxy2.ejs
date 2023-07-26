@@ -1,25 +1,26 @@
-<!-- proxy.ejs -->
+<!-- proxy2.ejs -->
 
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Node Unblocker</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shell.css">
 </head>
 
 <body>
   <div class="container">
     <h1>Node</h1>
     <p>Type a link or a search query below:</p>
-    <form id="search-form" action="/search" method="get">
+    <p>You are using DuckDuckGo</p>
+    <form id="search-form" action="/search2" method="get">
       <div class="search-container">
         <input type="text" id="search-input" name="query" placeholder="Enter URL or search query">
         <button type="submit" id="search-button">Go</button>
       </div>
     </form>
-    <a href="/proxy/https://www.google.com/?gws_rd=ssl" class="google-button">Google</a>
-    <a href="/proxy2/" class="google-button">DuckDuckGo</a>
+    <!-- Go back to Google button -->
+    <a href="/proxy" class="go-back-button">Go back to Google</a>
   </div>
 </body>
 
